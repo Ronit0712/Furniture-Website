@@ -1,0 +1,440 @@
+{% include "admin/navbar.html" %}
+
+<!-- slider section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Cafe Slider</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_csliderimg/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Cafe Slider Image </p>
+                        <input type="file" name="csliderimg" class="form-control" />
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Image</th>
+                    
+                </tr>
+                {% for i in csliderimgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_csliderimg?id={{i.id}}">
+                            <button class="btn"onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.csliderimg}}" width="150px">
+                    </td>
+                    
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         </div>
+
+</div>
+</div> 
+
+<hr>
+
+
+
+<!-- video section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Cafe Video </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_cvideos/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 p-2">
+                        <p> Cafe Video 1 </p>
+                        <input type="file" name="cvideo1" class="form-control" />
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{cvideos.cvideo1}}" />
+                        </video>
+                    </div>
+
+
+                    <div class="col-md-3 p-2">
+                        <p>Cafe Video 2</p>
+                        <input type="file" name="cvideo2" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{cvideos.cvideo2}}" />
+                        </video>
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    
+</div>
+</div> 
+
+<hr> 
+
+
+<!-- Top Picks Section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Cafe Top Picks </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ctopic/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-4 p-2">
+                        <p>Subject Imgae</p>
+                        <input type="file" name="ctopicimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Image Title</p>
+                        <input type="text" name="ctopicimgt" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    
+                    <th>Image</th>
+                    <th>Image Title</th>
+
+                 
+                </tr>
+                {% for i in ctopics %}
+                <tr>
+                    <td>
+                        <a href="/admin/delete_ctopic?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.ctopicimg}}" width="200px">
+                    </td>
+                    <td>{{i.ctopicimgt}}</td>
+                
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr>
+
+
+<!-- Video Slider -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Cafe Videos </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_csvideo/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Upload Video </p>
+                        <input type="file" name="csvideo" class="form-control" />
+                    </div>
+         
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Video</th>
+                 
+                </tr>
+                {% for i in csvideos %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_csvideo?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{i.csvideo}}" />
+                        </video>
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+
+
+<!-- Gallery Images -->
+<div class="container  p-5 rounded-5 bg-white " >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Cafe Gallery Images </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_cgc1img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 1 Images </p>
+                        <input type="file" name="cgc1img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/save_cgc2img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 2 Images </p>
+                        <input type="file" name="cgc2img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_cgc3img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 3 Images </p>
+                        <input type="file" name="cgc3img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_cgc4img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 4 Images </p>
+                        <input type="file" name="cgc4img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!------------------------------ Tables ---------------------------------- -->
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 1 Images</th>
+                 
+                </tr>
+                {% for i in cgc1imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_cgc1img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.cgc1img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 2 Images</th>
+                 
+                </tr>
+                {% for i in cgc2imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_cgc2img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.cgc2img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 3 Images</th>
+                 
+                </tr>
+                {% for i in cgc3imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_cgc3img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.cgc3img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 4 Images</th>
+                 
+                </tr>
+                {% for i in cgc4imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_cgc4img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.cgc4img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+      
+</div>
+</div> 
+<hr> 
+
+
+{% include "admin/footer.html" %}

@@ -1,0 +1,28 @@
+{% include "user/navbar.html" %}  
+        <div class="container-fluid p-3">
+            <div class="row justify-content-center">
+                {% for i in blogs %}
+                <div class="col-md-9 border bg-light p-4 mt-5">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="/{{i.bimage}}"
+                                class="img-fluid mt-3" data-aos="zoom-in">
+                        </div>
+                        <div class="col-md-9 p-3">
+                            <h2 data-aos="zoom-in">{{i.btitle}}</h2><p data-aos="zoom-in">{{i.bdate}},</p>
+                            <p style="text-align: justify;" data-aos="fade-in">{{i.bdis}}
+                            </p>
+
+                            <p class="fs-4 justify-end">- by {{i.blog_by}}</p>
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% include "user/footer.html" %}
+

@@ -1,0 +1,86 @@
+{% include "admin/navbar.html" %}
+
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Contact List</h1>
+        </div>
+        <hr/>
+
+        <div class="col-md-12 mt-5 table-responsive">
+            <table class="table table-borderd text-center" style="color: rgb(6, 3, 3); font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Message</th>
+                    
+                </tr>
+            {% for i in ccontacts %}   
+                <tr>
+                    <td>
+                        <a href="/admin/delete_contact?id={{i.id}}">
+                            <button class="btn"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.cname}}</td>
+                    <td>{{i.cmobile}} </td>
+                    <td>{{i.cemail}}</td>
+                    <td>{{i.ccity}}</td>
+                    <td>{{i.cmessage}}</td>
+                    
+                </tr>
+            {% endfor %} 
+            </table>
+        </div> 
+        
+    </div>
+</div>
+</div>
+<hr>
+
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Contact(Address & Phone) </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_contact/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+
+                    <div class="col-md-4 p-2">
+                        <p>Address</p>
+                        <input type="text" name="address" value="{{contacts.address}}" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Phone Number</p>
+                        <input type="text" name="phoneno" value="{{contacts.phoneno}}" class="form-control"/>
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Email</p>
+                        <input type="email" name="email" value="{{contacts.email}}" class="form-control"/>
+                    </div>
+
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        
+        
+    </div>
+</div>
+
+{% include "admin/footer.html" %}

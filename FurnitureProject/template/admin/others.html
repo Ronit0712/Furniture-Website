@@ -1,0 +1,333 @@
+{% include "admin/navbar.html" %}
+
+<!-- Top Picks Section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Other Top Picks </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ottopic/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-4 p-2">
+                        <p>Subject Imgae</p>
+                        <input type="file" name="ottopicimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Image Title</p>
+                        <input type="text" name="ottopicimgt" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    
+                    <th>Image</th>
+                    <th>Image Title</th>
+
+                 
+                </tr>
+                {% for i in ottopics %}
+                <tr>
+                    <td>
+                        <a href="/admin/delete_ottopic?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.ottopicimg}}" width="200px">
+                    </td>
+                    <td>{{i.ottopicimgt}}</td>
+                
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr>
+
+
+<!-- Video Slider -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Other Videos </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_otsvideo/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Upload Video </p>
+                        <input type="file" name="otsvideo" class="form-control" />
+                    </div>
+         
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Video</th>
+                 
+                </tr>
+                {% for i in otsvideos %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_otsvideo?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{i.otsvideo}}" />
+                        </video>
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+
+
+<!-- Gallery Images -->
+<div class="container  p-5 rounded-5 bg-white " >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Other Gallery Images </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_otgc1img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 1 Images </p>
+                        <input type="file" name="otgc1img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/save_otgc2img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 2 Images </p>
+                        <input type="file" name="otgc2img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_otgc3img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 3 Images </p>
+                        <input type="file" name="otgc3img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_otgc4img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 4 Images </p>
+                        <input type="file" name="otgc4img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!------------------------------ Tables ---------------------------------- -->
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 1 Images</th>
+                 
+                </tr>
+                {% for i in otgc1imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_otgc1img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.otgc1img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 2 Images</th>
+                 
+                </tr>
+                {% for i in otgc2imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_otgc2img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.otgc2img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 3 Images</th>
+                 
+                </tr>
+                {% for i in otgc3imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_otgc3img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.otgc3img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 4 Images</th>
+                 
+                </tr>
+                {% for i in otgc4imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_otgc4img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.otgc4img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+      
+</div>
+</div> 
+<hr> 
+
+
+{% include "admin/footer.html" %}

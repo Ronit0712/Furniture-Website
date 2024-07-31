@@ -1,0 +1,522 @@
+{% include "admin/navbar.html" %}
+
+<!-- slider section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Home Slider</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_hsliderimg/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Home Slider Image </p>
+                        <input type="file" name="hsliderimg" class="form-control" />
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Image</th>
+                    
+                </tr>
+                {% for i in hsliderimgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hsliderimg?id={{i.id}}">
+                            <button class="btn"onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.hsliderimg}}" width="150px">
+                    </td>
+                    
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         </div>
+
+</div>
+</div> 
+
+<hr>
+
+
+
+<!-- video section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Home Video </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_hvideos/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 p-2">
+                        <p> Home Video 1 </p>
+                        <input type="file" name="hvideo1" class="form-control" />
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{hvideos.hvideo1}}" />
+                        </video>
+                    </div>
+
+
+                    <div class="col-md-3 p-2">
+                        <p>Home Video 2</p>
+                        <input type="file" name="hvideo2" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{hvideos.hvideo2}}" />
+                        </video>
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    
+</div>
+</div> 
+
+<hr> 
+
+
+<!-- Top Picks Section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Home Top Picks </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_htopic/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-4 p-2">
+                        <p>Subject Imgae</p>
+                        <input type="file" name="htopicimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Image Title</p>
+                        <input type="text" name="htopicimgt" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    
+                    <th>Image</th>
+                    <th>Image Title</th>
+
+                 
+                </tr>
+                {% for i in htopics %}
+                <tr>
+                    <td>
+                        <a href="/admin/delete_htopic?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.htopicimg}}" width="200px">
+                    </td>
+                    <td>{{i.htopicimgt}}</td>
+                
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr>
+
+
+<!-- Video Slider -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Home Videos </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_hsvideo/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Upload Video </p>
+                        <input type="file" name="hsvideo" class="form-control" />
+                    </div>
+
+
+               
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Video</th>
+                 
+                </tr>
+                {% for i in hsvideos %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hsvideo?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{i.hsvideo}}" />
+                        </video>
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+
+
+<!-- Gallery Images -->
+<div class="container  p-5 rounded-5 bg-white " >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Home Gallery Images </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_hgc1img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 1 Images </p>
+                        <input type="file" name="hgc1img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/save_hgc2img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 2 Images </p>
+                        <input type="file" name="hgc2img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_hgc3img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 3 Images </p>
+                        <input type="file" name="hgc3img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_hgc4img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 4 Images </p>
+                        <input type="file" name="hgc4img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!------------------------------ Tables ---------------------------------- -->
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 1 Images</th>
+                 
+                </tr>
+                {% for i in hgc1imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hgc1img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.hgc1img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 2 Images</th>
+                 
+                </tr>
+                {% for i in hgc2imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hgc2img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.hgc2img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 3 Images</th>
+                 
+                </tr>
+                {% for i in hgc3imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hgc3img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.hgc3img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 4 Images</th>
+                 
+                </tr>
+                {% for i in hgc4imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_hgc4img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.hgc4img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+      
+</div>
+</div> 
+<hr> 
+
+
+<!-- Customer Feedback -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Customer Feedback</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_feedback/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Furniture Image </p>
+                        <input type="file" name="fimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Customer Profile Photo </p>
+                        <input type="file" name="cpimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Customer Name</p>
+                        <input type="text" name="cname" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Feedback</p>
+                        <input type="text" name="cfeedback" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Imgae</th>
+                    <th>Profile Img</th>
+                    <th>Name</th>
+                    <th>Massage</th>
+                 
+                </tr>
+                {% for i in feedbacks %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_feedback?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.fimg}}" width="200px">
+                    </td>
+                    <td>
+                        <img src="/{{i.cpimg}}" width="100px">
+                    </td>
+                    <td>{{i.cname}}</td>
+                    <td>{{i.cfeedback}}</td>
+
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+{% include "admin/footer.html" %}

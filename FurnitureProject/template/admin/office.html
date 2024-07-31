@@ -1,0 +1,440 @@
+{% include "admin/navbar.html" %}
+
+<!-- slider section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Office Slider</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ofsliderimg/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Office Slider Image </p>
+                        <input type="file" name="ofsliderimg" class="form-control" />
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Image</th>
+                    
+                </tr>
+                {% for i in ofsliderimgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofsliderimg?id={{i.id}}">
+                            <button class="btn"onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.ofsliderimg}}" width="150px">
+                    </td>
+                    
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         </div>
+
+</div>
+</div> 
+
+<hr>
+
+
+
+<!-- video section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Office Video </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ofvideos/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 p-2">
+                        <p> Office Video 1 </p>
+                        <input type="file" name="ofvideo1" class="form-control" />
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{ofvideos.ofvideo1}}" />
+                        </video>
+                    </div>
+
+
+                    <div class="col-md-3 p-2">
+                        <p>Office Video 2</p>
+                        <input type="file" name="ofvideo2" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{ofvideos.ofvideo2}}" />
+                        </video>
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    
+</div>
+</div> 
+
+<hr> 
+
+
+<!-- Top Picks Section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Office Top Picks </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_oftopic/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-4 p-2">
+                        <p>Subject Imgae</p>
+                        <input type="file" name="oftopicimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Image Title</p>
+                        <input type="text" name="oftopicimgt" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    
+                    <th>Image</th>
+                    <th>Image Title</th>
+
+                 
+                </tr>
+                {% for i in oftopics %}
+                <tr>
+                    <td>
+                        <a href="/admin/delete_oftopic?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.oftopicimg}}" width="200px">
+                    </td>
+                    <td>{{i.oftopicimgt}}</td>
+                
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr>
+
+
+<!-- Video Slider -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Office Videos </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ofsvideo/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Upload Video </p>
+                        <input type="file" name="ofsvideo" class="form-control" />
+                    </div>
+         
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Video</th>
+                 
+                </tr>
+                {% for i in ofsvideos %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofsvideo?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{i.ofsvideo}}" />
+                        </video>
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+
+
+<!-- Gallery Images -->
+<div class="container  p-5 rounded-5 bg-white " >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Office Gallery Images </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ofgc1img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 1 Images </p>
+                        <input type="file" name="ofgc1img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/save_ofgc2img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 2 Images </p>
+                        <input type="file" name="ofgc2img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_ofgc3img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 3 Images </p>
+                        <input type="file" name="ofgc3img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_ofgc4img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 4 Images </p>
+                        <input type="file" name="ofgc4img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!------------------------------ Tables ---------------------------------- -->
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 1 Images</th>
+                 
+                </tr>
+                {% for i in ofgc1imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofgc1img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.ofgc1img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 2 Images</th>
+                 
+                </tr>
+                {% for i in ofgc2imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofgc2img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.ofgc2img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 3 Images</th>
+                 
+                </tr>
+                {% for i in ofgc3imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofgc3img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.ofgc3img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 4 Images</th>
+                 
+                </tr>
+                {% for i in ofgc4imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ofgc4img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.ofgc4img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+      
+</div>
+</div> 
+<hr> 
+
+
+{% include "admin/footer.html" %}

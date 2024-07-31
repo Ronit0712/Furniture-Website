@@ -1,0 +1,90 @@
+{% include "admin/navbar.html" %}
+
+
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Blog</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_blog/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Image </p>
+                        <input type="file" name="bimage" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Title</p>
+                        <input type="text" name="btitle" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Date</p>
+                        <input type="text" name="bdate" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Discription</p>
+                        <textarea name="bdis" class="form-control"></textarea>
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <P> Blog By</p>
+                        <input type="text" name="blog_by" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Discription</th>
+                    <th>Blog By</th>
+
+                    
+                </tr>
+                {% for i in blogs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_blog?id={{i.id}}">
+                            <button class="btn "><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.bimage}}" width="200px">
+                    </td>
+                    <td>{{i.btitle}}</td>
+                    <td>{{i.bdate}}</td>
+                    <td>{{i.bdis}}</td>
+                    <td>{{i.blog_by}}</td>
+                    
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         </div>
+
+        </div>
+</div>
+</div> 
+
+<hr>
+{% include "admin/footer.html" %}

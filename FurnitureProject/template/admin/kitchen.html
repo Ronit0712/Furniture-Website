@@ -1,0 +1,440 @@
+{% include "admin/navbar.html" %}
+
+<!-- slider section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Kitchen Slider</h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ksliderimg/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Kitchen Slider Image </p>
+                        <input type="file" name="ksliderimg" class="form-control" />
+                    </div>
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Image</th>
+                    
+                </tr>
+                {% for i in ksliderimgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ksliderimg?id={{i.id}}">
+                            <button class="btn"onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.ksliderimg}}" width="150px">
+                    </td>
+                    
+
+                </tr>
+               {% endfor %}
+            
+            </table>
+         </div>
+
+</div>
+</div> 
+
+<hr>
+
+
+
+<!-- video section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Kitchen Video </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_kvideos/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 p-2">
+                        <p> Kitchen Video 1 </p>
+                        <input type="file" name="kvideo1" class="form-control" />
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{kvideos.kvideo1}}" />
+                        </video>
+                    </div>
+
+
+                    <div class="col-md-3 p-2">
+                        <p>Kitchen Video 2</p>
+                        <input type="file" name="kvideo2" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3 p-2">
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{kvideos.kvideo2}}" />
+                        </video>
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    
+</div>
+</div> 
+
+<hr> 
+
+
+<!-- Top Picks Section -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Kitchen Top Picks </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ktopic/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-4 p-2">
+                        <p>Subject Imgae</p>
+                        <input type="file" name="ktopicimg" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 p-2">
+                        <p>Image Title</p>
+                        <input type="text" name="ktopicimgt" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    
+                    <th>Image</th>
+                    <th>Image Title</th>
+
+                 
+                </tr>
+                {% for i in ktopics %}
+                <tr>
+                    <td>
+                        <a href="/admin/delete_ktopic?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                        </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <img src="/{{i.ktopicimg}}" width="200px">
+                    </td>
+                    <td>{{i.ktopicimgt}}</td>
+                
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr>
+
+
+<!-- Video Slider -->
+<div class="container  p-5 rounded-5 bg-white" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Kitchen Videos </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_ksvideo/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 p-2">
+                        <p>Upload Video </p>
+                        <input type="file" name="ksvideo" class="form-control" />
+                    </div>
+         
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-12 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style="font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    <th>SN</th>
+                    <th>Video</th>
+                 
+                </tr>
+                {% for i in ksvideos %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_ksvideo?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <video style="height: 100px;" width="100px">
+                            <source src="/{{i.ksvideo}}" />
+                        </video>
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+</div>
+</div> 
+<hr> 
+
+
+<!-- Gallery Images -->
+<div class="container  p-5 rounded-5 bg-white " >
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Kitchen Gallery Images </h1>
+        </div>
+        <hr/>
+
+        <form action="/admin/save_kgc1img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 1 Images </p>
+                        <input type="file" name="kgc1img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/save_kgc2img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 2 Images </p>
+                        <input type="file" name="kgc2img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_kgc3img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 3 Images </p>
+                        <input type="file" name="kgc3img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form action="/admin/save_kgc4img/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 p-2">
+                        <p>Column 4 Images </p>
+                        <input type="file" name="kgc4img" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <button class="btn btn-dark btn-outline-success text-white">UPLOAD</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!------------------------------ Tables ---------------------------------- -->
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 1 Images</th>
+                 
+                </tr>
+                {% for i in kgc1imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_kgc1img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.kgc1img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 2 Images</th>
+                 
+                </tr>
+                {% for i in kgc2imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_kgc2img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.kgc2img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 3 Images</th>
+                 
+                </tr>
+                {% for i in kgc3imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_kgc3img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.kgc3img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+        <div class="col-md-3 mt-5 table-responsive" >
+            <table class="table table-sm table-borderd  text-center" style=" color: rgb(77, 32, 57);;font-size: larger; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <tr>
+                    <th>Action</th>
+                    
+                    <th>Col 4 Images</th>
+                 
+                </tr>
+                {% for i in kgc4imgs %}
+                <tr>
+                    <td>
+                        
+                        <a href="/admin/delete_kgc4img?id={{i.id}}">
+                            <button class="btn "onclick="return confirm('are you sure?')"><i class="fa fa-trash"></i></button>
+                            </a>
+                    </td>
+                   
+                   
+                    <td>
+                        <img src="/{{i.kgc4img}}" width="150px">
+                    </td>
+                  
+                </tr>
+               {% endfor %}
+            
+            </table>
+         
+
+        </div>
+
+      
+</div>
+</div> 
+<hr> 
+
+
+{% include "admin/footer.html" %}
